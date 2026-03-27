@@ -4,14 +4,10 @@
   <meta charset="UTF-8" />
   <title>Catálogo de IA: Chatbots, Asistentes y Herramientas</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Accede a las interfaces de las IA más famosas con un solo clic. ChatGPT, Claude, Gemini y más, categorizadas para facilitar tu búsqueda." />
+  <meta name="description" content="Accede a las interfaces de las IA más famosas con un solo clic. ChatGPT, Claude, Gemini, DeepSeek y más, categorizadas para facilitar tu búsqueda." />
   <style>
     /* Reset básico */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     
     :root {
       --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -21,16 +17,14 @@
       --card-hover: rgba(255, 255, 255, 0.15);
       --text-primary: #ffffff;
       --text-secondary: #e0e6ed;
-      --accent-color: #ff6b6b;
+      --accent-color: #64b5f6;
       --border-radius: 16px;
       --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.1);
       --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.3);
-      --shadow-heavy: 0 12px 40px rgba(0, 0, 0, 0.4);
+      --shadow-heavy: 0 12px 40px rgba(0, 0, 0, 0.5);
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -55,153 +49,158 @@
     }
 
     header h1 {
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-size: clamp(2rem, 5vw, 3.5rem);
       font-weight: 700;
       background: linear-gradient(45deg, #fff, #64b5f6, #81c784);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       margin-bottom: 1rem;
-      position: relative;
+      padding: 0 10px;
     }
 
     header p {
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      font-size: clamp(0.95rem, 2.5vw, 1.15rem);
       color: var(--text-secondary);
       max-width: 700px;
       margin: 0 auto;
       opacity: 0.9;
+      padding: 0 15px;
     }
 
     /* Barra de Búsqueda */
     .search-container {
-        text-align: center;
-        margin: 2rem 0;
-        position: sticky;
-        top: 20px;
-        z-index: 100;
+      text-align: center;
+      margin: 2rem 0;
+      position: sticky;
+      top: 15px;
+      z-index: 100;
+      padding: 0 10px;
     }
 
     .search-box {
-        padding: 12px 20px;
-        font-size: 1rem;
-        border: 2px solid rgba(255,255,255,0.2);
-        border-radius: 50px;
-        background: rgba(255,255,255,0.1);
-        color: white;
-        backdrop-filter: blur(10px);
-        width: 100%;
-        max-width: 400px;
-        transition: all 0.3s ease;
+      padding: 14px 24px;
+      font-size: 1.05rem;
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: 50px;
+      background: rgba(15, 32, 39, 0.7);
+      color: white;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      width: 100%;
+      max-width: 500px;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-medium);
     }
 
     .search-box:focus {
-        outline: none;
-        border-color: rgba(255,255,255,0.5);
-        box-shadow: 0 0 20px rgba(255,255,255,0.2);
+      outline: none;
+      border-color: var(--accent-color);
+      box-shadow: 0 0 25px rgba(100, 181, 246, 0.3);
+      background: rgba(15, 32, 39, 0.9);
     }
+
+    .search-box::placeholder { color: rgba(255, 255, 255, 0.6); }
 
     /* Canales de suscripción */
     .subscribe-channels-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 1.5rem;
-      margin-bottom: 3rem;
+      margin-bottom: 3.5rem;
     }
 
     .subscribe-container {
-      padding: 2rem;
+      padding: 2rem 1.5rem;
       border-radius: var(--border-radius);
       text-align: center;
       box-shadow: var(--shadow-medium);
       backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.1);
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
       color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .subscribe-container::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
-      transition: left 0.5s;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      transition: left 0.6s;
     }
 
-    .subscribe-container:hover::before {
-      left: 100%;
-    }
-
+    .subscribe-container:hover::before { left: 100%; }
     .subscribe-container:hover {
-      transform: translateY(-8px) scale(1.02);
+      transform: translateY(-5px);
       box-shadow: var(--shadow-heavy);
     }
-    
-    .subscribe-container.youtube { background: linear-gradient(135deg, #FF0000, #CD201F); }
+
+    .subscribe-container.youtube { background: linear-gradient(135deg, #FF0000, #b31217); }
     .subscribe-container.whatsapp { background: linear-gradient(135deg, #25D366, #128C7E); }
     .subscribe-container.telegram { background: linear-gradient(135deg, #0088CC, #005A7F); }
-    .subscribe-container.spreaker { background: linear-gradient(135deg, #00a651, #007d3c); }
+    .subscribe-container.spreaker { background: linear-gradient(135deg, #f5b01d, #e67e22); } /* Actualizado color Spreaker */
 
     .subscribe-container h2 {
-      color: #fff;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       margin-bottom: 0.75rem;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .subscribe-container p {
-      color: rgba(255,255,255,0.9);
       font-size: 0.95rem;
-      margin-bottom: 1rem;
-      line-height: 1.4;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+      opacity: 0.9;
+      flex-grow: 1;
     }
 
     .subscribe-button {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 0.5rem;
-      background: rgba(255,255,255,0.95);
-      color: #333;
-      padding: 10px 20px;
+      background: #ffffff;
+      color: #1a1a1a;
+      padding: 12px 24px;
       border-radius: 40px;
       font-size: 0.95rem;
-      font-weight: 600;
+      font-weight: 700;
       text-decoration: none;
       transition: all 0.25s ease;
       box-shadow: var(--shadow-light);
+      align-self: center;
     }
 
-    .subscribe-button:hover {
-      transform: scale(1.04);
-    }
+    .subscribe-button:hover { transform: scale(1.05); }
 
     /* Secciones */
-    .category-section {
-      margin-bottom: 3rem;
-    }
+    .category-section { margin-bottom: 4rem; }
 
     .category-section h2 {
-      font-size: clamp(1.6rem, 3.5vw, 2rem);
-      margin-bottom: 1.5rem;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      margin-bottom: 2rem;
       text-align: center;
       position: relative;
       color: var(--text-primary);
-      font-weight: 600;
+      font-weight: 700;
+      padding-bottom: 10px;
     }
 
     .category-section h2::after {
       content: '';
       position: absolute;
-      bottom: -8px;
+      bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 60px;
-      height: 3px;
+      width: 80px;
+      height: 4px;
       background: var(--secondary-gradient);
       border-radius: 2px;
     }
@@ -209,524 +208,666 @@
     /* Grid de tarjetas */
     .container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      /* Mejorado a 240px para móviles pequeños */
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
       gap: 1.5rem;
-      align-items: start;
+      align-items: stretch;
     }
 
     .card {
       background: var(--card-bg);
       border-radius: var(--border-radius);
-      padding: 1.5rem;
+      padding: 1.75rem 1.5rem;
       text-align: center;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       cursor: pointer;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       position: relative;
       overflow: hidden;
-      height: 100%;
       display: flex;
       flex-direction: column;
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(20px);
+      text-decoration: none;
+      color: inherit;
     }
-    
+
     .card.visible {
-        opacity: 1;
-        transform: translateY(0);
-        transition: opacity 0.6s ease, transform 0.6s ease;
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.5s ease, transform 0.5s ease;
     }
 
     .card:hover {
       transform: translateY(-8px);
       background: var(--card-hover);
       box-shadow: var(--shadow-heavy);
-      border-color: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.2);
     }
 
-    .card > * { position: relative; z-index: 1; }
+    /* Icono de enlace externo (Usabilidad) */
+    .card::after {
+      content: '↗';
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.2rem;
+      opacity: 0;
+      color: var(--accent-color);
+      transition: all 0.3s ease;
+      transform: translate(-5px, 5px);
+    }
+
+    .card:hover::after {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
 
     /* Iconos */
     .icon-circle {
-      width: 80px;
-      height: 80px;
+      width: 75px;
+      height: 75px;
       border-radius: 50%;
-      margin: 0 auto 1rem auto;
+      margin: 0 auto 1.25rem auto;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.5rem;
-      box-shadow: var(--shadow-light);
-      transition: all 0.3s ease;
+      font-size: 2.2rem;
+      box-shadow: var(--shadow-medium);
+      transition: all 0.4s ease;
       flex-shrink: 0;
       color: #fff;
     }
-    
+
     .card:hover .icon-circle {
-      transform: scale(1.06) rotate(4deg);
-      box-shadow: var(--shadow-medium);
+      transform: scale(1.1) rotate(5deg);
     }
 
-    /* Iconos específicos */
-    .icon-circle.chatgpt { background: linear-gradient(135deg, #10a37f, #1a7f64); }
+    /* Colores y emojis de iconos (Antiguos y Nuevos) */
+    .icon-circle.chatgpt { background: linear-gradient(135deg, #10a37f, #0b6b52); }
     .icon-circle.claude { background: linear-gradient(135deg, #d4850c, #b8730a); }
-    .icon-circle.gemini { background: linear-gradient(135deg, #4285f4, #34a853); }
-    .icon-circle.copilot { background: linear-gradient(135deg, #0078d4, #106ebe); }
-    .icon-circle.deepseek { background: linear-gradient(135deg, #1e3a8a, #1e40af); }
-    .icon-circle.qwen { background: linear-gradient(135deg, #ff6b35, #f7931e); }
-    .icon-circle.metaai { background: linear-gradient(135deg, #1877f2, #42a5f5); }
-    .icon-circle.mistral { background: linear-gradient(135deg, #ff7000, #e65100); }
-    .icon-circle.grok { background: linear-gradient(135deg, #1da1f2, #0d8bd9); }
-    .icon-circle.perplexity { background: linear-gradient(135deg, #20bcd5, #1ba3b8); }
-    .icon-circle.luzia { background: linear-gradient(135deg, #e91e63, #ad1457); }
-    .icon-circle.youcom { background: linear-gradient(135deg, #8e24aa, #7b1fa2); }
-    .icon-circle.genspark { background: linear-gradient(135deg, #ff9800, #f57c00); }
-    .icon-circle.manus { background: linear-gradient(135deg, #607d8b, #455a64); }
-    .icon-circle.googleaistudio { background: linear-gradient(135deg, #4caf50, #388e3c); }
-    .icon-circle.notebooklm { background: linear-gradient(135deg, #ff5722, #d84315); }
-    .icon-circle.one_min_ai { background: linear-gradient(135deg, #9c27b0, #7b1fa2); }
-    .icon-circle.merlinai { background: linear-gradient(135deg, #673ab7, #512da8); }
-    .icon-circle.ai4chat { background: linear-gradient(135deg, #00bcd4, #0097a7); }
-    .icon-circle.erniebot { background: linear-gradient(135deg, #2932e1, #1652f1); }
-    .icon-circle.minimax { background: linear-gradient(135deg, #333333, #555555); }
-    .icon-circle.kimi { background: linear-gradient(135deg, #8a4dff, #6d28d9); }
-    .icon-circle.convergence { background: linear-gradient(135deg, #3f51b5, #303f9f); }
-    .icon-circle.zai { background: linear-gradient(135deg, #4a00e0, #8e2de2); }
+    .icon-circle.gemini { background: linear-gradient(135deg, #4285f4, #1a73e8); }
+    .icon-circle.copilot { background: linear-gradient(135deg, #0078d4, #005a9e); }
+    .icon-circle.deepseek { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
+    .icon-circle.qwen { background: linear-gradient(135deg, #6366f1, #4f46e5); }
+    .icon-circle.metaai { background: linear-gradient(135deg, #06b6d4, #0891b2); }
+    .icon-circle.mistral { background: linear-gradient(135deg, #f97316, #ea580c); }
+    .icon-circle.grok { background: linear-gradient(135deg, #1f2937, #111827); }
+    .icon-circle.perplexity { background: linear-gradient(135deg, #14b8a6, #0d9488); }
+    .icon-circle.luzia { background: linear-gradient(135deg, #ec4899, #db2777); }
+    .icon-circle.youcom { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+    .icon-circle.genspark { background: linear-gradient(135deg, #f59e0b, #d97706); }
+    .icon-circle.manus { background: linear-gradient(135deg, #64748b, #475569); }
+    .icon-circle.googleaistudio { background: linear-gradient(135deg, #10b981, #059669); }
+    .icon-circle.notebooklm { background: linear-gradient(135deg, #f43f5e, #e11d48); }
+    .icon-circle.one_min_ai { background: linear-gradient(135deg, #d946ef, #c026d3); }
+    .icon-circle.merlinai { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
+    .icon-circle.ai4chat { background: linear-gradient(135deg, #0ea5e9, #0284c7); }
+    .icon-circle.erniebot { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+    .icon-circle.minimax { background: linear-gradient(135deg, #525252, #404040); }
+    .icon-circle.kimi { background: linear-gradient(135deg, #a855f7, #9333ea); }
+    .icon-circle.convergence { background: linear-gradient(135deg, #4f46e5, #4338ca); }
+    .icon-circle.zai { background: linear-gradient(135deg, #6366f1, #4f46e5); }
+    /* Nuevos Iconos */
+    .icon-circle.poe { background: linear-gradient(135deg, #5b21b6, #4c1d95); }
+    .icon-circle.huggingchat { background: linear-gradient(135deg, #fcd34d, #f59e0b); }
+    .icon-circle.v0 { background: linear-gradient(135deg, #000000, #1a1a1a); border: 2px solid #333;}
+    .icon-circle.bolt { background: linear-gradient(135deg, #2dd4bf, #14b8a6); }
+    .icon-circle.midjourney { background: linear-gradient(135deg, #1e293b, #0f172a); border: 2px solid #3b82f6; }
+    .icon-circle.runway { background: linear-gradient(135deg, #7e22ce, #6b21a8); }
 
     .icon-circle::before { font-style: normal; }
-
+    
     .icon-circle.chatgpt::before { content: '💬'; }
     .icon-circle.claude::before { content: '🤖'; }
     .icon-circle.gemini::before { content: '✨'; }
     .icon-circle.copilot::before { content: '✈️'; }
-    .icon-circle.deepseek::before { content: '🧠'; }
+    .icon-circle.deepseek::before { content: '🐋'; } /* Ballena de Deepseek */
     .icon-circle.qwen::before { content: '🐉'; }
-    .icon-circle.metaai::before { content: '🌐'; }
-    .icon-circle.mistral::before { content: '🔥'; }
-    .icon-circle.grok::before { content: '🤪'; }
-    .icon-circle.perplexity::before { content: '❓'; }
-    .icon-circle.luzia::before { content: '👋'; }
-    .icon-circle.youcom::before { content: '🔍'; }
+    .icon-circle.metaai::before { content: '♾️'; }
+    .icon-circle.mistral::before { content: '🌪️'; }
+    .icon-circle.grok::before { content: '✖️'; }
+    .icon-circle.perplexity::before { content: '🔍'; }
+    .icon-circle.luzia::before { content: '👩'; }
+    .icon-circle.youcom::before { content: '👉'; }
     .icon-circle.genspark::before { content: '⚡'; }
     .icon-circle.manus::before { content: '⚙️'; }
-    .icon-circle.googleaistudio::before { content: '🚀'; }
+    .icon-circle.googleaistudio::before { content: '🛠️'; }
     .icon-circle.notebooklm::before { content: '📝'; }
     .icon-circle.one_min_ai::before { content: '⏱️'; }
     .icon-circle.merlinai::before { content: '🧙'; }
-    .icon-circle.ai4chat::before { content: '💬'; }
+    .icon-circle.ai4chat::before { content: '📱'; }
     .icon-circle.erniebot::before { content: '🐾'; }
     .icon-circle.minimax::before { content: '👨‍💻'; }
     .icon-circle.kimi::before { content: '📚'; }
     .icon-circle.convergence::before { content: '🔄'; }
-    .icon-circle.zai::before { content: '⚡'; }
+    .icon-circle.zai::before { content: '🚀'; }
+    .icon-circle.poe::before { content: '🐙'; }
+    .icon-circle.huggingchat::before { content: '🤗'; }
+    .icon-circle.v0::before { content: '💻'; }
+    .icon-circle.bolt::before { content: '⚡'; }
+    .icon-circle.midjourney::before { content: '⛵'; }
+    .icon-circle.runway::before { content: '🎬'; }
 
     .card h3 {
-      font-size: 1.15rem;
-      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
       color: var(--text-primary);
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .card p {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: var(--text-secondary);
       flex-grow: 1;
       line-height: 1.5;
+      opacity: 0.85;
+    }
+
+    /* Estado sin resultados */
+    .no-results {
+      text-align: center;
+      padding: 3rem 1rem;
+      display: none;
+      color: var(--text-secondary);
+    }
+    .no-results p { font-size: 1.2rem; margin-top: 1rem; }
+    .no-results span { font-size: 3rem; }
+
+    /* Botón Volver arriba */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--accent-color);
+      color: #000;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      text-decoration: none;
+      box-shadow: var(--shadow-medium);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-5px);
+      background: #fff;
     }
 
     /* Footer */
     footer {
-      margin-top: 4rem;
-      padding: 2rem 0;
+      margin-top: 5rem;
+      padding: 3rem 1rem;
       text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      background: rgba(0,0,0,0.12);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      background: rgba(0,0,0,0.2);
     }
 
     footer p {
       margin-bottom: 0.5rem;
       color: var(--text-secondary);
+      font-size: 0.95rem;
     }
 
-    footer .author-info {
-      font-size: 0.85rem;
-      opacity: 0.9;
-    }
+    footer .author-info { opacity: 0.8; font-size: 0.85rem; }
 
-    /* Animaciones de entrada */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
     /* Responsividad */
     @media (max-width: 768px) {
-      .container-wrapper { padding: 0.5rem; }
-      .subscribe-channels-container { grid-template-columns: 1fr; gap: 1rem; }
-      .subscribe-container, .card { padding: 1.25rem; }
-      .container { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
-      .icon-circle { width: 70px; height: 70px; font-size: 2rem; }
+      .container-wrapper { padding: 0.75rem; }
+      .search-box { padding: 12px 20px; font-size: 1rem; }
+      .subscribe-container { padding: 1.5rem; }
+      .icon-circle { width: 65px; height: 65px; font-size: 1.8rem; }
+      .back-to-top { bottom: 20px; right: 20px; width: 45px; height: 45px; }
     }
 
     @media (max-width: 480px) {
       .container { grid-template-columns: 1fr; }
-      .card, .subscribe-container { padding: 1rem; }
+      header h1 { font-size: 1.8rem; }
     }
 
-    /* Focus states */
-    .card:focus, .subscribe-button:focus, .search-box:focus {
-      outline: 2px solid #64b5f6;
-      outline-offset: 2px;
+    /* Accesibilidad */
+    .card:focus-visible, .subscribe-button:focus-visible, .search-box:focus-visible, .back-to-top:focus-visible {
+      outline: 3px solid var(--accent-color);
+      outline-offset: 3px;
     }
+    .card:focus { outline: none; } /* Quita outline por defecto al clickear */
   </style>
 </head>
 <body>
   <div class="container-wrapper">
     <header>
-      <h1>Catálogo de IA: Chatbots, Asistentes y Herramientas</h1>
-      <p>Accede a las interfaces de las IA más famosas y usadas con un solo clic.<br>Categorizadas para facilitar tu búsqueda y optimizar tu productividad.</p>
+      <h1>Catálogo de IA: Herramientas y Asistentes</h1>
+      <p>Accede a las interfaces de las inteligencias artificiales más famosas y productivas. Mantenido y actualizado para profesionales de la educación y tecnología.</p>
     </header>
 
     <div class="search-container">
-        <input type="text" id="search-box" class="search-box" placeholder="🔎 Buscar herramientas de IA...">
+      <input type="text" id="search-box" class="search-box" placeholder="🔎 Buscar por nombre, función o categoría..." aria-label="Buscar herramientas de IA">
     </div>
 
+    <!-- Canales de Suscripción -->
     <div class="subscribe-channels-container">
       <div class="subscribe-container youtube">
         <h2>Comunidad TecnoEducaTics</h2>
         <p>Descubre tutoriales, cursos y contenido educativo para docentes y profesionales.</p>
-        <a href="https://www.youtube.com/@TecnoEducaTics?sub_confirmation=1" target="_blank" class="subscribe-button" rel="noopener">🔔 YouTube</a>
+        <a href="https://www.youtube.com/@TecnoEducaTics?sub_confirmation=1" target="_blank" class="subscribe-button" rel="noopener noreferrer">🔔 YouTube</a>
       </div>
-
       <div class="subscribe-container whatsapp">
         <h2>Canal de WhatsApp</h2>
         <p>Recibe las últimas novedades y tips exclusivos directamente en tu WhatsApp.</p>
-        <a href="https://whatsapp.com/channel/0029Va6FP4C6hENyzxtO8d0e" target="_blank" class="subscribe-button" rel="noopener">📱 Unirse</a>
+        <a href="https://whatsapp.com/channel/0029Va6FP4C6hENyzxtO8d0e" target="_blank" class="subscribe-button" rel="noopener noreferrer">📱 Unirse</a>
       </div>
-
       <div class="subscribe-container telegram">
         <h2>Canal de Telegram</h2>
         <p>Accede a material exclusivo, discusiones y anuncios de nuestra comunidad.</p>
-        <a href="https://t.me/cursoseducativos" target="_blank" class="subscribe-button" rel="noopener">📢 Seguir</a>
-      </div>
-      
+        <a href="https://t.me/cursoseducativos" target="_blank" class="subscribe-button" rel="noopener noreferrer">📢 Seguir</a>
+      </div>      
       <div class="subscribe-container spreaker">
         <h2>Podcast TecnoEducaTics</h2>
-        <p>Escucha análisis, entrevistas y novedades sobre tecnología educativa y IA.</p>
-        <a href="https://www.spreaker.com/podcast/tecnoeducatics--6664603" target="_blank" class="subscribe-button" rel="noopener">🎙️ Escuchar</a>
+        <p>Escucha análisis, entrevistas y novedades sobre tecnología educativa e IA.</p>
+        <a href="https://www.spreaker.com/podcast/tecnoeducatics--6664603" target="_blank" class="subscribe-button" rel="noopener noreferrer">🎙️ Escuchar</a>
       </div>
     </div>
 
-    <div class="category-section" id="category-chatbots">
+    <!-- Mensaje cuando no hay resultados en la búsqueda -->
+    <div id="no-results" class="no-results">
+      <span>🤖</span>
+      <p>No encontramos ninguna IA que coincida con tu búsqueda.</p>
+    </div>
+
+    <!-- Contenedores Dinámicos -->
+    <div class="category-section" id="section-chatbots">
       <h2>Chatbots Conversacionales</h2>
       <div class="container" id="chatbots-container"></div>
     </div>
 
-    <div class="category-section" id="category-assistants">
-      <h2>Asistentes y Agentes de IA</h2>
+    <div class="category-section" id="section-agregadores">
+      <h2>Agregadores y Multi-Modelos</h2>
+      <div class="container" id="agregadores-container"></div>
+    </div>
+
+    <div class="category-section" id="section-assistants">
+      <h2>Asistentes y Agentes Autónomos</h2>
       <div class="container" id="assistants-agents-container"></div>
     </div>
 
-    <div class="category-section" id="category-tools">
-      <h2>Herramientas de Productividad y Utilidades de IA</h2>
+    <div class="category-section" id="section-codigo">
+      <h2>Generadores de Código y UI</h2>
+      <div class="container" id="codigo-container"></div>
+    </div>
+
+    <div class="category-section" id="section-multimedia">
+      <h2>Generación Multimedia (Imagen y Video)</h2>
+      <div class="container" id="multimedia-container"></div>
+    </div>
+
+    <div class="category-section" id="section-tools">
+      <h2>Productividad y Utilidades de IA</h2>
       <div class="container" id="tools-utilities-container"></div>
     </div>
   </div>
 
+  <a href="#" class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</a>
+
   <footer>
     <div class="container-wrapper">
-      <p>© 2025 - Catálogo de IA. Todos los derechos reservados.</p>
+      <p>© 2026 - Catálogo de IA. Todos los derechos reservados.</p>
       <p class="author-info">Desarrollado por: Ing. de Sistemas Rubén Sierra</p>
-      <p class="author-info">Diseño e interactividad realizados con la ayuda de ChatGPT y Gemini</p>
+      <p class="author-info">Diseño e interactividad optimizados con ayuda de la IA.</p>
     </div>
   </footer>
 
   <script>
     const iaList = [
+      // --- CHATBOTS CONVERSACIONALES ---
       {
         nombre: "ChatGPT",
-        descripcion: "Modelo de lenguaje avanzado de OpenAI para conversaciones inteligentes, generación de texto, código y análisis.",
+        descripcion: "Modelo líder de OpenAI (GPT-4.o / GPT-5). Excelente para texto, programación, análisis y multimodalidad.",
         iconClass: "chatgpt",
-        enlaceChat: "https://chat.openai.com/",
-        categoria: "Chatbots Conversacionales"
+        enlaceChat: "https://chatgpt.com/",
+        categoria: "chatbots-container"
       },
       {
         nombre: "Claude",
-        descripcion: "Chatbot de Anthropic reconocido por su seguridad, capacidad de contexto extenso y razonamiento ético.",
+        descripcion: "Chatbot de Anthropic (Familia Opus/Sonnet). Destaca por su ventana de contexto gigante y redacción humana.",
         iconClass: "claude",
         enlaceChat: "https://claude.ai/",
-        categoria: "Chatbots Conversacionales"
+        categoria: "chatbots-container"
       },
       {
         nombre: "Gemini",
-        descripcion: "Chatbot multimodal de Google con capacidades avanzadas para entender y generar texto, imágenes, audio y video.",
+        descripcion: "IA nativa multimodal de Google. Excelente integración con ecosistema Workspace e investigación en la web.",
         iconClass: "gemini",
         enlaceChat: "https://gemini.google.com/",
-        categoria: "Chatbots Conversacionales"
+        categoria: "chatbots-container"
       },
       {
         nombre: "Copilot",
-        descripcion: "Asistente de IA de Microsoft (antes Bing Chat) para productividad, integrado en navegadores y SO.",
+        descripcion: "Asistente web de Microsoft impulsado por GPT, conectado a la web para respuestas actualizadas.",
         iconClass: "copilot",
         enlaceChat: "https://copilot.microsoft.com/",
-        categoria: "Chatbots Conversacionales"
+        categoria: "chatbots-container"
       },
       {
         nombre: "DeepSeek",
-        descripcion: "IA china competitiva, ofreciendo modelos de lenguaje potentes, eficientes y de código abierto.",
+        descripcion: "Potente modelo eficiente, líder en matemáticas (R1/R2) y código abierto, con excelente relación calidad/rendimiento.",
         iconClass: "deepseek",
         enlaceChat: "https://chat.deepseek.com/",
-        categoria: "Chatbots Conversacionales"
+        categoria: "chatbots-container"
       },
       {
         nombre: "Qwen",
-        descripcion: "Chatbot avanzado de Alibaba Cloud con capacidades multilingües, multimodales y para tareas complejas.",
+        descripcion: "IA de Alibaba, superando barreras en razonamiento lógico y capacidades multilingües avanzadas.",
         iconClass: "qwen",
         enlaceChat: "https://chat.qwen.ai/",
-        categoria: "Chatbots Conversacionales"
+        categoria: "chatbots-container"
       },
       {
         nombre: "Meta AI",
-        descripcion: "Solución conversacional de Meta integrada en WhatsApp, Instagram y Facebook para interacciones naturales.",
+        descripcion: "Modelo integrado en las apps de Meta (Llama), ideal para consultas rápidas sin salir de tus redes sociales.",
         iconClass: "metaai",
         enlaceChat: "https://www.meta.ai/",
-        categoria: "Chatbots Conversacionales"
+        categoria: "chatbots-container"
       },
       {
         nombre: "Mistral AI",
-        descripcion: "Chatbot europeo de alta eficiencia basado en modelos Mistral, especializado en tareas complejas y razonamiento.",
+        descripcion: "Modelo europeo de código abierto, ultrarrápido y sin censura restrictiva para tareas de desarrollo.",
         iconClass: "mistral",
-        enlaceChat: "https://chat.mistral.ai/chat",
-        categoria: "Chatbots Conversacionales"
+        enlaceChat: "https://chat.mistral.ai/",
+        categoria: "chatbots-container"
       },
       {
         nombre: "Grok",
-        descripcion: "Chatbot de xAI (Elon Musk) integrado en X, con acceso a datos en tiempo real y personalidad distintiva.",
+        descripcion: "IA de xAI integrada en X. Acceso a noticias en tiempo real con un modo 'divertido' o 'experto'.",
         iconClass: "grok",
-        enlaceChat: "https://x.com/grok",
-        categoria: "Chatbots Conversacionales"
-      },
-      {
-        nombre: "Perplexity AI",
-        descripcion: "Motor de búsqueda conversacional que proporciona respuestas precisas con fuentes citadas y verificadas.",
-        iconClass: "perplexity",
-        enlaceChat: "https://www.perplexity.ai/",
-        categoria: "Chatbots Conversacionales"
+        enlaceChat: "https://x.com/i/grok",
+        categoria: "chatbots-container"
       },
       {
         nombre: "ERNIE Bot (Baidu)",
-        descripcion: "Chatbot de Baidu (Wenxin Yiyan), un modelo de lenguaje mejorado con conocimiento para texto y código.",
+        descripcion: "Chatbot líder de Baidu (Wenxin Yiyan). Fuerte en comprensión de contexto cultural asiático y generación.",
         iconClass: "erniebot",
-        enlaceChat: "https://chat.baidu.com/",
-        categoria: "Chatbots Conversacionales"
+        enlaceChat: "https://yiyan.baidu.com/",
+        categoria: "chatbots-container"
       },
-
-      /* --- añadido: Z.ai --- */
       {
         nombre: "Z.ai",
-        descripcion: "Chatbot conversacional de última generación que ofrece respuestas rápidas y precisas en múltiples idiomas.",
+        descripcion: "Alternativa conversacional rápida y optimizada para búsquedas y generación de respuestas fluidas.",
         iconClass: "zai",
         enlaceChat: "https://chat.z.ai/",
-        categoria: "Chatbots Conversacionales"
+        categoria: "chatbots-container"
       },
 
-      /* Asistentes y Agentes */
+      // --- AGREGADORES Y MULTI-MODELOS (NUEVOS) ---
+      {
+        nombre: "Poe",
+        descripcion: "Plataforma de Quora para acceder a múltiples IA (Claude, GPT, Llama, Gemini) en una sola suscripción.",
+        iconClass: "poe",
+        enlaceChat: "https://poe.com/",
+        categoria: "agregadores-container"
+      },
+      {
+        nombre: "HuggingChat",
+        descripcion: "Alternativa de código abierto de Hugging Face. Prueba los últimos modelos open-source gratis.",
+        iconClass: "huggingchat",
+        enlaceChat: "https://huggingface.co/chat/",
+        categoria: "agregadores-container"
+      },
+
+      // --- ASISTENTES Y AGENTES ---
+      {
+        nombre: "Perplexity AI",
+        descripcion: "Motor de búsqueda IA que investiga la web, cita fuentes académicas y actúa como investigador personal.",
+        iconClass: "perplexity",
+        enlaceChat: "https://www.perplexity.ai/",
+        categoria: "assistants-agents-container"
+      },
       {
         nombre: "Luzia",
-        descripcion: "Asistente personal de IA multifuncional en WhatsApp para tareas diarias, traducciones y transcripciones.",
+        descripcion: "Asistente en WhatsApp. Transcribe audios, crea imágenes y responde preguntas fácilmente desde tu celular.",
         iconClass: "luzia",
         enlaceChat: "https://www.luzia.com/",
-        categoria: "Asistentes y Agentes de IA"
+        categoria: "assistants-agents-container"
       },
       {
         nombre: "You.com",
-        descripcion: "Motor de búsqueda y asistente de IA centrado en productividad con chat, búsqueda web y agentes especializados.",
+        descripcion: "Buscador y plataforma de agentes que personaliza la investigación profunda con herramientas integradas.",
         iconClass: "youcom",
         enlaceChat: "https://you.com/",
-        categoria: "Asistentes y Agentes de IA"
+        categoria: "assistants-agents-container"
       },
-      {
-        nombre: "Genspark AI",
-        descripcion: "Motor de agente de IA autónomo que sintetiza información y ejecuta tareas complejas con planificación.",
-        iconClass: "genspark",
-        enlaceChat: "https://www.genspark.ai/",
-        categoria: "Asistentes y Agentes de IA"
-      },
-      /* Manus actualizado al link de invitación solicitado */
       {
         nombre: "Manus AI",
-        descripcion: "Agente de IA autónomo para realizar tareas online complejas sin supervisión, incluyendo desarrollo y escritura.",
+        descripcion: "Agente autónomo que controla el navegador y el sistema para ejecutar tareas largas sin supervisión.",
         iconClass: "manus",
         enlaceChat: "https://manus.im/invitation/DESPQDLDSEVMCQ",
-        categoria: "Asistentes y Agentes de IA"
+        categoria: "assistants-agents-container"
       },
       {
         nombre: "Convergence AI",
-        descripcion: "Asistente de IA que automatiza tareas diarias y flujos de trabajo a través de comandos de lenguaje natural, aprendiendo y adaptándose al usuario.",
+        descripcion: "Asistente inteligente que automatiza flujos de trabajo diarios aprendiendo de tus acciones.",
         iconClass: "convergence",
-        enlaceChat: "http://Convergence.ai",
-        categoria: "Asistentes y Agentes de IA"
+        enlaceChat: "https://convergence.ai",
+        categoria: "assistants-agents-container"
+      },
+      {
+        nombre: "Genspark",
+        descripcion: "Crea páginas estilo 'wiki' en segundos sintetizando información de la web para investigaciones complejas.",
+        iconClass: "genspark",
+        enlaceChat: "https://www.genspark.ai/",
+        categoria: "assistants-agents-container"
+      },
+      {
+        nombre: "Kimi (Moonshot)",
+        descripcion: "Especialista absoluto en procesar documentos inmensos (millones de tokens) y encontrar datos precisos.",
+        iconClass: "kimi",
+        enlaceChat: "https://www.kimi.com/",
+        categoria: "assistants-agents-container"
       },
       {
         nombre: "Minimax Agent",
-        descripcion: "Agente de IA autónomo de código abierto para realizar tareas complejas de varios pasos como codificación y análisis.",
+        descripcion: "Ecosistema de agentes de IA para ejecutar tareas modulares en análisis de datos y programación.",
         iconClass: "minimax",
         enlaceChat: "https://agent.minimax.io/",
-        categoria: "Asistentes y Agentes de IA"
-      },
-      {
-        nombre: "Kimi Chat",
-        descripcion: "Asistente de IA (Moonshot AI) que procesa y resume documentos y archivos de texto extremadamente largos.",
-        iconClass: "kimi",
-        enlaceChat: "https://www.kimi.com/",
-        categoria: "Asistentes y Agentes de IA"
+        categoria: "assistants-agents-container"
       },
 
-      /* Herramientas y utilidades */
+      // --- GENERADORES DE CÓDIGO (NUEVOS) ---
       {
-        nombre: "Google AI Studio",
-        descripcion: "Plataforma avanzada de Google para desarrolladores, permitiendo construir y experimentar con modelos de IA.",
-        iconClass: "googleaistudio",
-        enlaceChat: "https://aistudio.google.com/",
-        categoria: "Herramientas de Productividad y Utilidades de IA"
+        nombre: "v0 by Vercel",
+        descripcion: "Generador de interfaces UI con IA. Dile qué quieres y construye componentes React/HTML funcionales al instante.",
+        iconClass: "v0",
+        enlaceChat: "https://v0.dev/",
+        categoria: "codigo-container"
       },
       {
+        nombre: "Bolt.new",
+        descripcion: "Agente de desarrollo web completo. Crea, edita y despliega aplicaciones web completas desde el navegador.",
+        iconClass: "bolt",
+        enlaceChat: "https://bolt.new/",
+        categoria: "codigo-container"
+      },
+
+      // --- MULTIMEDIA (NUEVOS) ---
+      {
+        nombre: "Midjourney",
+        descripcion: "El modelo más avanzado para generación de imágenes artísticas e hiperrealistas. (Ahora en web).",
+        iconClass: "midjourney",
+        enlaceChat: "https://www.midjourney.com/",
+        categoria: "multimedia-container"
+      },
+      {
+        nombre: "Runway Gen-3",
+        descripcion: "Plataforma líder en generación de video con IA (texto a video e imagen a video) de calidad cinematográfica.",
+        iconClass: "runway",
+        enlaceChat: "https://runwayml.com/",
+        categoria: "multimedia-container"
+      },
+
+      // --- PRODUCTIVIDAD Y UTILIDADES ---
+      {
         nombre: "NotebookLM",
-        descripcion: "Herramienta colaborativa de IA de Google que resume, genera ideas y organiza información de fuentes propias.",
+        descripcion: "Sube tus PDFs o apuntes y Google genera podcasts, resúmenes y guías de estudio personalizados.",
         iconClass: "notebooklm",
         enlaceChat: "https://notebooklm.google.com/",
-        categoria: "Herramientas de Productividad y Utilidades de IA"
+        categoria: "tools-utilities-container"
+      },
+      {
+        nombre: "Google AI Studio",
+        descripcion: "Plataforma de prueba gratuita de Google para usar los modelos Gemini Pro con máxima ventana de contexto.",
+        iconClass: "googleaistudio",
+        enlaceChat: "https://aistudio.google.com/",
+        categoria: "tools-utilities-container"
       },
       {
         nombre: "1min.ai",
-        descripcion: "Aplicación todo-en-uno con chat, generación de imágenes, música, voz y video, impulsada por múltiples IAs.",
+        descripcion: "Plataforma 'Todo en Uno' que consume créditos para usar múltiples IAs de imagen, texto y video.",
         iconClass: "one_min_ai",
         enlaceChat: "https://1min.ai/",
-        categoria: "Herramientas de Productividad y Utilidades de IA"
+        categoria: "tools-utilities-container"
       },
       {
         nombre: "Merlin AI",
-        descripcion: "Extensión de navegador con IA para investigación, escritura y resumen que combina múltiples modelos.",
+        descripcion: "Extensión para navegador que lleva el poder de ChatGPT y Claude a correos, YouTube y redes sociales.",
         iconClass: "merlinai",
         enlaceChat: "https://www.getmerlin.in/",
-        categoria: "Herramientas de Productividad y Utilidades de IA"
+        categoria: "tools-utilities-container"
       },
       {
         nombre: "AI4Chat",
-        descripcion: "Plataforma integral de IA con chat multi-modelo, generación de contenido multimedia y herramientas productivas.",
+        descripcion: "Centro integral con apps móviles para gestionar varias IA conversacionales desde un solo portal.",
         iconClass: "ai4chat",
         enlaceChat: "https://www.ai4chat.co/",
-        categoria: "Herramientas de Productividad y Utilidades de IA"
+        categoria: "tools-utilities-container"
       }
     ];
 
     document.addEventListener('DOMContentLoaded', () => {
-        const containers = {
-            'Chatbots Conversacionales': document.getElementById('chatbots-container'),
-            'Asistentes y Agentes de IA': document.getElementById('assistants-agents-container'),
-            'Herramientas de Productividad y Utilidades de IA': document.getElementById('tools-utilities-container')
-        };
-        const searchBox = document.getElementById('search-box');
+      const searchBox = document.getElementById('search-box');
+      const noResultsDiv = document.getElementById('no-results');
+      const backToTopBtn = document.getElementById('backToTop');
 
-        function createCard(ia) {
-            const card = document.createElement('div');
-            card.className = 'card';
-            card.setAttribute('tabindex', '0');
-            card.setAttribute('role', 'button');
-            card.setAttribute('aria-label', `Abrir ${ia.nombre}: ${ia.descripcion}`);
-            card.dataset.name = ia.nombre.toLowerCase();
-            card.dataset.description = ia.descripcion.toLowerCase();
-            card.dataset.category = ia.categoria;
-
-            card.addEventListener('click', () => {
-                window.open(ia.enlaceChat, '_blank', 'noopener,noreferrer');
-            });
-
-            card.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    window.open(ia.enlaceChat, '_blank', 'noopener,noreferrer');
-                }
-            });
-
-            const iconCircle = document.createElement('div');
-            iconCircle.className = `icon-circle ${ia.iconClass}`;
-
-            const title = document.createElement('h3');
-            title.textContent = ia.nombre;
-
-            const description = document.createElement('p');
-            description.textContent = ia.descripcion;
-
-            card.appendChild(iconCircle);
-            card.appendChild(title);
-            card.appendChild(description);
-            return card;
-        }
-
-        function renderCards() {
-            // Limpiar contenedores antes de renderizar
-            Object.values(containers).forEach(container => container.innerHTML = '');
-
-            iaList.forEach(ia => {
-                const card = createCard(ia);
-                const container = containers[ia.categoria];
-                if (container) {
-                    container.appendChild(card);
-                }
-            });
-            setupIntersectionObserver();
-        }
-
-        function filterCards() {
-            const searchTerm = searchBox.value.toLowerCase();
-            const allCards = document.querySelectorAll('.card');
-            const categorySections = document.querySelectorAll('.category-section');
-
-            allCards.forEach(card => {
-                const isVisible = card.dataset.name.includes(searchTerm) || card.dataset.description.includes(searchTerm);
-                card.style.display = isVisible ? 'flex' : 'none';
-            });
-            
-            categorySections.forEach(section => {
-                const visibleCards = section.querySelectorAll('.card[style*="display: flex"]');
-                section.style.display = visibleCards.length > 0 ? 'block' : 'none';
-            });
-        }
+      // Crear tarjeta HTML
+      function createCard(ia) {
+        const a = document.createElement('a');
+        a.className = 'card';
+        a.href = ia.enlaceChat;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.setAttribute('aria-label', `Abrir ${ia.nombre}`);
         
-        function setupIntersectionObserver() {
-            if ('IntersectionObserver' in window) {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visible');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, { 
-                    threshold: 0.1,
-                    rootMargin: '0px 0px -50px 0px' 
-                });
+        // Datos para búsqueda
+        a.dataset.name = ia.nombre.toLowerCase();
+        a.dataset.description = ia.descripcion.toLowerCase();
 
-                document.querySelectorAll('.card').forEach(card => {
-                    observer.observe(card);
-                });
-            } else {
-                // Fallback para navegadores sin IntersectionObserver
-                document.querySelectorAll('.card').forEach(card => {
-                    card.classList.add('visible');
-                });
-            }
+        const iconCircle = document.createElement('div');
+        iconCircle.className = `icon-circle ${ia.iconClass}`;
+
+        const title = document.createElement('h3');
+        title.textContent = ia.nombre;
+
+        const description = document.createElement('p');
+        description.textContent = ia.descripcion;
+
+        a.appendChild(iconCircle);
+        a.appendChild(title);
+        a.appendChild(description);
+        return a;
+      }
+
+      // Renderizar tarjetas iniciales
+      function renderCards() {
+        iaList.forEach(ia => {
+          const container = document.getElementById(ia.categoria);
+          if (container) {
+            container.appendChild(createCard(ia));
+          }
+        });
+        setupIntersectionObserver();
+      }
+
+      // Filtrado y búsqueda
+      function filterCards() {
+        const searchTerm = searchBox.value.toLowerCase();
+        const allCards = document.querySelectorAll('.card');
+        const categorySections = document.querySelectorAll('.category-section');
+        let hasVisibleCards = false;
+
+        allCards.forEach(card => {
+          const isVisible = card.dataset.name.includes(searchTerm) || card.dataset.description.includes(searchTerm);
+          if (isVisible) {
+            card.style.display = 'flex';
+            // Forzamos la animación si estaban ocultas por el observer
+            card.classList.add('visible'); 
+            hasVisibleCards = true;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        // Mostrar/Ocultar secciones enteras
+        categorySections.forEach(section => {
+          const visibleCards = section.querySelectorAll('.card[style*="display: flex"], .card:not([style*="display: none"])');
+          // Validamos si hay tarjetas visibles reales dentro del contenedor
+          let countVisible = 0;
+          visibleCards.forEach(c => { if(c.style.display !== 'none') countVisible++; });
+          
+          section.style.display = countVisible > 0 ? 'block' : 'none';
+        });
+
+        // Mostrar mensaje de "No hay resultados"
+        noResultsDiv.style.display = hasVisibleCards ? 'none' : 'block';
+      }
+
+      // Animaciones al hacer Scroll
+      function setupIntersectionObserver() {
+        if ('IntersectionObserver' in window) {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+          document.querySelectorAll('.card').forEach(card => observer.observe(card));
+        } else {
+          document.querySelectorAll('.card').forEach(card => card.classList.add('visible'));
         }
-        
-        searchBox.addEventListener('input', filterCards);
-        renderCards();
+      }
 
-        console.log('🚀 Catálogo de IA cargado exitosamente.');
-        console.log(`📊 Total de herramientas: ${iaList.length}`);
+      // Lógica botón Volver arriba
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.add('show');
+        } else {
+          backToTopBtn.classList.remove('show');
+        }
+      });
+
+      backToTopBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // Inicializar
+      searchBox.addEventListener('input', filterCards);
+      renderCards();
     });
   </script>
 </body>
 </html>
-
