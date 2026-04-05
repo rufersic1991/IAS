@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Catálogo Pedagógico de IA: Encuentra la herramienta perfecta para docentes, estudiantes y profesionales." />
+  <title>Catálogo Pedagógico de IA | TecnoEducaTics</title>
+  
+  <!-- Tipografías modernas y limpias -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=cabinet-grotesk@500,700,800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* SISTEMA DE DISEÑO Y VARIABLES */
+    :root, [data-theme="light"] {
+      --font-body: 'Satoshi', system-ui, sans-serif;
+      --font-display: 'Cabinet Grotesk', 'Satoshi', sans-serif;
+      
+      --color-bg: #f8fafc;
+      --color-surface: #ffffff;
+      --color-surface-hover: #f1f5f9;
+      --color-text: #0f172a;
+      --color-text-muted: #475569;
+      --color-border: #e2e8f0;
+      
+      --color-primary: #2563eb;
+      --color-primary-hover: #1d4ed8;
+      --color-accent: #f59e0b;
+      --color-tag-bg: #e0e7ff;
+      --color-tag-text: #3730a3;
+
+      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+      --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      
+      --hero-bg: radial-gradient(circle at top right, rgba(37,99,235,0.08), transparent 40%), 
+                 linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+    }
+
+    [data-theme="dark"] {
+      --color-bg: #0f172a;
+      --color-surface: #1e293b;
+      --color-surface-hover: #334155;
+      --color-text: #f8fafc;
+      --color-text-muted: #cbd5e1;
+      --color-border: #334155;
+      
+      --color-primary: #3b82f6;
+      --color-primary-hover: #60a5fa;
+      --color-accent: #fbbf24;
+      --color-tag-bg: #1e3a8a;
+      --color-tag-text: #bfdbfe;
+
+      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+      --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+      --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+
+      --hero-bg: radial-gradient(circle at top right, rgba(59,130,246,0.15), transparent 40%), 
+                 linear-gradient(180deg, #0f172a 0%, #020617 100%);
+    }
+
+    /* RESET BÁSICO */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      color: var(--color-text);
+      background: var(--color-bg);
+      line-height: 1.6;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    a { text-decoration: none; color: inherit; }
+    button, input, select { font: inherit; }
+    :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; }
+
+    /* LAYOUT GLOBAL */
+    .container { width: min(1200px, calc(100% - 2rem)); margin: 0 auto; }
+    
+    /* ACCESIBILIDAD */
+    .skip-link {
+      position: absolute; left: 1rem; top: -3rem; background: var(--color-primary); color: white;
+      padding: 0.75rem 1rem; border-radius: 0.5rem; z-index: 1000; transition: top 0.2s;
+    }
+    .skip-link:focus { top: 1rem; }
+
+    /* NAVBAR */
+    .navbar {
+      position: sticky; top: 0; z-index: 100;
+      backdrop-filter: blur(12px); background: color-mix(in srgb, var(--color-bg) 80%, transparent);
+      border-bottom: 1px solid var(--color-border);
+      padding: 1rem 0;
+    }
+    .navbar .container { display: flex; justify-content: space-between; align-items: center; }
+    .brand { display: flex; align-items: center; gap: 0.75rem; font-family: var(--font-display); font-weight: 800; font-size: 1.25rem; }
+    .brand-icon { 
+      background: linear-gradient(135deg, var(--color-primary), var(--color-accent)); 
+      color: white; width: 36px; height: 36px; border-radius: 10px; 
+      display: grid; place-items: center; font-size: 1.2rem;
+    }
+    .theme-toggle {
+      background: var(--color-surface); border: 1px solid var(--color-border);
+      color: var(--color-text); width: 40px; height: 40px; border-radius: 50%;
+      display: grid; place-items: center; cursor: pointer; transition: all 0.2s;
+    }
+    .theme-toggle:hover { background: var(--color-surface-hover); transform: scale(1.05); }
+
+    /* HERO SECTION */
+    .hero { padding: 4rem 0; background: var(--hero-bg); border-bottom: 1px solid var(--color-border); text-align: center; }
+    .hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .hero h1 span { background: linear-gradient(135deg, var(--color-primary), var(--color-accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { font-size: 1.125rem; color: var(--color-text-muted); max-width: 600px; margin: 0 auto 2rem; }
+    
+    /* CANALES DE COMUNIDAD */
+    .community-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-top: 2rem;
+    }
+    .community-card {
+      padding: 1.5rem; border-radius: 1rem; color: white; text-align: left;
+      transition: transform 0.2s, box-shadow 0.2s; box-shadow: var(--shadow-md);
+      display: flex; flex-direction: column; justify-content: space-between; gap: 1rem;
+    }
+    .community-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+    .community-card h3 { font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem; }
+    .community-card p { font-size: 0.875rem; opacity: 0.9; margin: 0; line-height: 1.4; }
+    .community-card a {
+      background: rgba(255,255,255,0.2); backdrop-filter: blur(5px); padding: 0.5rem 1rem;
+      border-radius: 2rem; font-weight: 600; text-align: center; font-size: 0.875rem; transition: background 0.2s;
+    }
+    .community-card a:hover { background: rgba(255,255,255,0.3); }
+    
+    .bg-youtube { background: linear-gradient(135deg, #ef4444, #991b1b); }
+    .bg-whatsapp { background: linear-gradient(135deg, #22c55e, #166534); }
+    .bg-telegram { background: linear-gradient(135deg, #0ea5e9, #075985); }
+    .bg-podcast { background: linear-gradient(135deg, #f59e0b, #b45309); }
+
+    /* BARRA DE BÚSQUEDA Y CONTROLES */
+    .controls-wrapper {
+      position: sticky; top: 70px; z-index: 90; margin: 2rem 0;
+      background: color-mix(in srgb, var(--color-bg) 90%, transparent); backdrop-filter: blur(8px);
+      padding: 1rem 0; border-bottom: 1px solid var(--color-border);
+    }
+    .controls { display: grid; grid-template-columns: 1fr auto; gap: 1rem; }
+    .search-box {
+      display: flex; align-items: center; gap: 0.75rem; background: var(--color-surface);
+      border: 1px solid var(--color-border); border-radius: 3rem; padding: 0.5rem 1.5rem;
+      box-shadow: var(--shadow-sm); transition: border-color 0.2s;
+    }
+    .search-box:focus-within { border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+    .search-box input { border: none; background: transparent; width: 100%; color: var(--color-text); font-size: 1rem; padding: 0.5rem 0; outline: none; }
+    .filter-select {
+      background: var(--color-surface); border: 1px solid var(--color-border); color: var(--color-text);
+      border-radius: 3rem; padding: 0.5rem 1.5rem; cursor: pointer; outline: none; box-shadow: var(--shadow-sm);
+    }
+
+    /* CONTENIDO PRINCIPAL */
+    main { padding-bottom: 4rem; }
+    
+    .category-section { margin-bottom: 4rem; scroll-margin-top: 150px; }
+    .category-header { margin-bottom: 2rem; }
+    .category-header h2 { font-family: var(--font-display); font-size: 2rem; display: flex; align-items: center; gap: 0.75rem; }
+    .category-header p { color: var(--color-text-muted); font-size: 1.1rem; margin-top: 0.5rem; }
+    
+    /* PEDAGOGICAL TIP */
+    .pedagogical-tip {
+      background: color-mix(in srgb, var(--color-primary) 10%, transparent);
+      border-left: 4px solid var(--color-primary); padding: 1rem; border-radius: 0 0.5rem 0.5rem 0;
+      margin-top: 1rem; display: inline-flex; align-items: flex-start; gap: 0.75rem; font-size: 0.95rem;
+    }
+    .pedagogical-tip i { font-style: normal; font-size: 1.2rem; }
+
+    /* GRID DE TARJETAS */
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+    
+    .card {
+      background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 1rem;
+      padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: var(--shadow-sm);
+      position: relative; overflow: hidden;
+    }
+    .card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); border-color: var(--color-primary); }
+    
+    .card-header { display: flex; gap: 1rem; align-items: center; }
+    .card-icon {
+      width: 56px; height: 56px; border-radius: 1rem; display: grid; place-items: center;
+      font-size: 1.8rem; color: white; flex-shrink: 0; box-shadow: var(--shadow-sm);
+    }
+    .card-title h3 { font-size: 1.25rem; font-family: var(--font-display); line-height: 1.2; }
+    .card-title span { font-size: 0.8rem; color: var(--color-text-muted); }
+    
+    .card-desc { color: var(--color-text-muted); font-size: 0.95rem; flex-grow: 1; }
+    
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+    .tag {
+      background: var(--color-tag-bg); color: var(--color-tag-text);
+      font-size: 0.75rem; font-weight: 600; padding: 0.25rem 0.75rem; border-radius: 2rem;
+    }
+
+    .card-action {
+      margin-top: 1rem; display: block; width: 100%; text-align: center;
+      background: var(--color-surface-hover); color: var(--color-text); border: 1px solid var(--color-border);
+      padding: 0.75rem; border-radius: 0.75rem; font-weight: 600; transition: all 0.2s;
+    }
+    .card:hover .card-action { background: var(--color-primary); color: white; border-color: var(--color-primary); }
+
+    /* ESTADO VACÍO */
+    .empty-state {
+      text-align: center; padding: 4rem 2rem; background: var(--color-surface);
+      border-radius: 1rem; border: 2px dashed var(--color-border); display: none;
+    }
+    .empty-state.active { display: block; }
+    .empty-state h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .empty-state p { color: var(--color-text-muted); }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--color-border); padding: 3rem 0; text-align: center; color: var(--color-text-muted); }
+    footer p { margin-bottom: 0.5rem; }
+    footer strong { color: var(--color-text); }
+
+    @media (max-width: 768px) {
+      .controls { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2rem; }
+      .tools-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Saltar al contenido</a>
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="#" class="brand">
+        <div class="brand-icon">IA</div>
+        <span>TecnoEducaTics</span>
+      </a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema (Claro/Oscuro)">
+        <span id="themeIcon">🌙</span>
+      </button>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <h1>Descubre la <span>Inteligencia Artificial</span> perfecta para ti</h1>
+      <p>Un catálogo curado con enfoque pedagógico. Selecciona la herramienta según el objetivo que necesites resolver en tus clases, investigaciones o trabajo diario.</p>
+      
+      <div class="community-grid">
+        <div class="community-card bg-youtube">
+          <h3>📺 Comunidad YouTube</h3>
+          <p>Tutoriales y cursos paso a paso.</p>
+          <a href="https://www.youtube.com/@TecnoEducaTics?sub_confirmation=1" target="_blank" rel="noopener">Suscribirse</a>
+        </div>
+        <div class="community-card bg-whatsapp">
+          <h3>📱 Canal WhatsApp</h3>
+          <p>Tips rápidos directo a tu móvil.</p>
+          <a href="https://whatsapp.com/channel/0029Va6FP4C6hENyzxtO8d0e" target="_blank" rel="noopener">Unirse al canal</a>
+        </div>
+        <div class="community-card bg-telegram">
+          <h3>✈️ Comunidad Telegram</h3>
+          <p>Material exclusivo y debates.</p>
+          <a href="https://t.me/cursoseducativos" target="_blank" rel="noopener">Seguir grupo</a>
+        </div>
+        <div class="community-card bg-podcast">
+          <h3>🎙️ Podcast Oficial</h3>
+          <p>Análisis de IA en audio.</p>
+          <a href="https://www.spreaker.com/podcast/tecnoeducatics--6664603" target="_blank" rel="noopener">Escuchar</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="controls-wrapper">
+    <div class="container controls">
+      <div class="search-box">
+        <span>🔎</span>
+        <input type="text" id="searchInput" placeholder="Busca por nombre (ej. ChatGPT), uso (ej. PDF) o etiqueta..." aria-label="Buscar IA">
+      </div>
+      <select class="filter-select" id="categoryFilter" aria-label="Filtrar por categoría">
+        <option value="all">Todas las categorías</option>
+        <!-- Options se generan por JS -->
+      </select>
+    </div>
+  </div>
+
+  <main id="main-content" class="container">
+    <div id="catalogContainer"></div>
+    
+    <div class="empty-state" id="emptyState">
+      <h3>No encontramos coincidencias 🕵️‍♂️</h3>
+      <p>Prueba con otros términos de búsqueda (ej. "video", "código", "gratis") o elimina los filtros.</p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p><strong>Catálogo Pedagógico de IA</strong> © 2026</p>
+      <p>Desarrollado para la comunidad educativa por: <strong>Ing. Rubén Sierra</strong></p>
+      <p style="font-size: 0.85rem; margin-top: 1rem; opacity: 0.7;">Diseño optimizado, accesible y clasificado semánticamente.</p>
+    </div>
+  </footer>
+
+  <script>
+    // --- BASE DE DATOS DEL CATÁLOGO ---
+    // Organizado con enfoque pedagógico/funcional
+    const iaDatabase = [
+      // 1. GIGANTES GLOBALES (Uso diario)
+      { nombre: "ChatGPT", descripcion: "El estándar de la industria (OpenAI). Excelente para redactar correos, planificar clases, estructurar ideas y análisis de datos básicos.", url: "https://chat.openai.com/", icon: "💬", color: "linear-gradient(135deg, #10a37f, #0d8265)", categoria: "Modelos Globales", tags: ["Texto", "Uso General", "OpenAI"] },
+      { nombre: "Claude", descripcion: "IA de Anthropic. Destaca por su tono humano, ética y capacidad masiva para leer documentos largos (ideal para leer PDFs enteros y resumirlos).", url: "https://claude.ai/", icon: "🤖", color: "linear-gradient(135deg, #d4850c, #b8730a)", categoria: "Modelos Globales", tags: ["PDFs largos", "Redacción humana", "Seguro"] },
+      { nombre: "Gemini", descripcion: "El cerebro de Google. Su ventaja es que está conectado a internet en tiempo real y se integra perfecto con Google Drive, Docs y Gmail.", url: "https://gemini.google.com/", icon: "✨", color: "linear-gradient(135deg, #4285f4, #34a853)", categoria: "Modelos Globales", tags: ["Ecosistema Google", "Internet", "Multimodal"] },
+      { nombre: "Copilot", descripcion: "IA de Microsoft. Utiliza GPT-4 y DALL-E gratis. Excelente para generar imágenes rápidas y buscar en la web con fuentes citadas.", url: "https://copilot.microsoft.com/", icon: "✈️", color: "linear-gradient(135deg, #0078d4, #106ebe)", categoria: "Modelos Globales", tags: ["Búsqueda Web", "Crear Imágenes", "Gratis GPT-4"] },
+
+      // 2. INVESTIGACIÓN Y BÚSQUEDA
+      { nombre: "Perplexity", descripcion: "Motor de búsqueda con IA. No inventa respuestas; lee páginas web y te da un resumen citando las fuentes exactas (links). Ideal para investigar.", url: "https://www.perplexity.ai/", icon: "❓", color: "linear-gradient(135deg, #20bcd5, #1ba3b8)", categoria: "Investigación y Fuentes", tags: ["Fuentes Citadas", "Tesis", "Búsqueda Web"] },
+      { nombre: "You.com", descripcion: "Motor de búsqueda centrado en productividad con agentes especializados (ej. un agente programador, uno escritor, etc).", url: "https://you.com/", icon: "🔍", color: "linear-gradient(135deg, #8e24aa, #7b1fa2)", categoria: "Investigación y Fuentes", tags: ["Buscador", "Agentes", "Productividad"] },
+      { nombre: "NotebookLM", descripcion: "Tu asistente de estudio personal (Google). Subes tus propios apuntes o libros y la IA te interroga, hace resúmenes o crea un podcast sobre ellos.", url: "https://notebooklm.google.com/", icon: "📝", color: "linear-gradient(135deg, #ff5722, #d84315)", categoria: "Investigación y Fuentes", tags: ["Estudio", "Tus propios datos", "Podcast automático"] },
+
+      // 3. AGENTES AUTÓNOMOS (Delegan tareas complejas)
+      { nombre: "Manus", descripcion: "Un agente autónomo que opera tu navegador. Le pides una investigación de mercado y él busca, lee, compila y te entrega un reporte final.", url: "https://manus.im/invitation/DESPQDLDSEVMCQ", icon: "⚙️", color: "linear-gradient(135deg, #607d8b, #455a64)", categoria: "Agentes Autónomos", tags: ["Piloto Automático", "Tareas largas", "Navegación web"] },
+      { nombre: "Genspark", descripcion: "Motor autónomo que sintetiza información compleja. Ideal para planificar currículos o proyectos desde cero.", url: "https://www.genspark.ai/", icon: "⚡", color: "linear-gradient(135deg, #ff9800, #f57c00)", categoria: "Agentes Autónomos", tags: ["Planificación", "Sintetizador"] },
+      { nombre: "Convergence", descripcion: "Automatiza flujos de trabajo diarios aprendiendo de tus comandos naturales. Funciona como un asistente virtual proactivo.", url: "http://Convergence.ai", icon: "🔄", color: "linear-gradient(135deg, #3f51b5, #303f9f)", categoria: "Agentes Autónomos", tags: ["Automatización", "Productividad"] },
+      { nombre: "Minimax Agent", descripcion: "Agente enfocado en codificación y análisis lógico avanzado en múltiples pasos.", url: "https://agent.minimax.io/", icon: "👨‍💻", color: "linear-gradient(135deg, #333333, #555555)", categoria: "Agentes Autónomos", tags: ["Programación", "Análisis lógico"] },
+
+      // 4. POTENCIAS ASIÁTICAS (Alternativas de alto rendimiento)
+      { nombre: "DeepSeek", descripcion: "Modelo chino muy potente y económico. Especialmente brillante en matemáticas, lógica y escritura de código de programación.", url: "https://chat.deepseek.com/", icon: "🧠", color: "linear-gradient(135deg, #1e3a8a, #1e40af)", categoria: "Potencias Asiáticas", tags: ["Código", "Razonamiento", "Matemáticas"] },
+      { nombre: "Qwen", descripcion: "IA de Alibaba. Muy versátil, capaz de entender imágenes y documentos, compitiendo de tú a tú con GPT-4 en varios idiomas.", url: "https://chat.qwen.ai/", icon: "🐉", color: "linear-gradient(135deg, #ff6b35, #f7931e)", categoria: "Potencias Asiáticas", tags: ["Multilingüe", "Visión", "Alibaba"] },
+      { nombre: "Kimi", descripcion: "Famoso por su memoria gigante. Puedes subir libros enteros o códigos kilométricos y recordará cada detalle de la conversación.", url: "https://www.kimi.com/", icon: "📚", color: "linear-gradient(135deg, #8a4dff, #6d28d9)", categoria: "Potencias Asiáticas", tags: ["Textos gigantes", "Memoria inmensa"] },
+      { nombre: "ERNIE Bot", descripcion: "El modelo insignia de Baidu. Muy adaptado al contexto asiático pero útil para tareas generales y generativas.", url: "https://chat.baidu.com/", icon: "🐾", color: "linear-gradient(135deg, #2932e1, #1652f1)", categoria: "Potencias Asiáticas", tags: ["Baidu", "Uso General"] },
+
+      // 5. ASISTENTES DE BOLSILLO Y REDES
+      { nombre: "Luzia", descripcion: "Asistente integrada en tu WhatsApp. Le envías audios, le pides recetas, traducciones o resúmenes sin salir de la app de mensajería.", url: "https://www.luzia.com/", icon: "👋", color: "linear-gradient(135deg, #e91e63, #ad1457)", categoria: "Redes y Bolsillo", tags: ["WhatsApp", "Audios", "Accesible"] },
+      { nombre: "Meta AI", descripcion: "El bot oficial dentro de WhatsApp, Instagram y Facebook. Genial para resolver dudas rápidas o crear imágenes para tus historias.", url: "https://www.meta.ai/", icon: "🌐", color: "linear-gradient(135deg, #1877f2, #42a5f5)", categoria: "Redes y Bolsillo", tags: ["Meta", "Imágenes", "Integrado en RRSS"] },
+      { nombre: "Grok", descripcion: "IA de X (Twitter). Tiene acceso a los tweets en tiempo real, lo que la hace perfecta para noticias de última hora o tendencias.", url: "https://x.com/grok", icon: "🤪", color: "linear-gradient(135deg, #1da1f2, #0d8bd9)", categoria: "Redes y Bolsillo", tags: ["Tiempo Real", "Twitter/X", "Noticias"] },
+
+      // 6. HERRAMIENTAS MULTIMODELO / DESARROLLO
+      { nombre: "1min.ai", descripcion: "La navaja suiza. Reúne a varios modelos de IA para generar texto, imágenes, música, clonación de voz y video en un solo lugar.", url: "https://1min.ai/", icon: "⏱️", color: "linear-gradient(135deg, #9c27b0, #7b1fa2)", categoria: "Herramientas Multimodelo", tags: ["Todo en uno", "Video", "Música"] },
+      { nombre: "Merlin AI", descripcion: "Una extensión para tu navegador. Te permite usar IA en cualquier página web: resume videos de YouTube largos o escribe emails.", url: "https://www.getmerlin.in/", icon: "🧙", color: "linear-gradient(135deg, #673ab7, #512da8)", categoria: "Herramientas Multimodelo", extension: true, tags: ["Extensión Chrome", "Resumir YouTube", "Emails"] },
+      { nombre: "AI4Chat", descripcion: "Interfaz unificada para chatear con distintos modelos de IA a la vez y comparar sus respuestas.", url: "https://www.ai4chat.co/", icon: "💡", color: "linear-gradient(135deg, #00bcd4, #0097a7)", categoria: "Herramientas Multimodelo", tags: ["Comparar Modelos", "Multi-Chat"] },
+      { nombre: "Google AI Studio", descripcion: "El 'laboratorio' de Google. Permite probar los modelos experimentales más nuevos y crear tus propias instrucciones avanzadas gratis.", url: "https://aistudio.google.com/", icon: "🚀", color: "linear-gradient(135deg, #4caf50, #388e3c)", categoria: "Herramientas Multimodelo", tags: ["Avanzado", "Gratis", "Desarrolladores"] },
+      
+      // Otras opciones valiosas
+      { nombre: "Mistral", descripcion: "Modelo europeo open-source. Muy eficiente, directo al punto y excelente para quienes buscan una alternativa a las grandes tecnológicas.", url: "https://chat.mistral.ai/chat", icon: "🔥", color: "linear-gradient(135deg, #ff7000, #e65100)", categoria: "Modelos Globales", tags: ["Europa", "Open Source", "Directo"] },
+      { nombre: "Z.ai", descripcion: "Asistente rápido y multilingüe, enfocado en respuestas ágiles y precisas para tareas cotidianas.", url: "https://chat.z.ai/", icon: "⚡", color: "linear-gradient(135deg, #4a00e0, #8e2de2)", categoria: "Modelos Globales", tags: ["Rápido", "Multilingüe"] }
+    ];
+
+    // --- CONFIGURACIÓN DE CATEGORÍAS Y TIPS PEDAGÓGICOS ---
+    const categoriasInfo = {
+      "Modelos Globales": { 
+        icono: "🌍", desc: "Los gigantes de la IA. Versátiles, potentes y perfectos como punto de partida.",
+        tip: "💡 <b>Tip Docente:</b> Úsalos para crear rúbricas de evaluación, lluvia de ideas o adaptar textos a diferentes niveles de lectura."
+      },
+      "Investigación y Fuentes": { 
+        icono: "📚", desc: "Sistemas diseñados para buscar información verificada, leer documentos y evitar 'alucinaciones'.",
+        tip: "💡 <b>Tip Docente:</b> Perplexity es ideal para enseñar a los alumnos a investigar, ya que siempre obliga a revisar las fuentes citadas."
+      },
+      "Agentes Autónomos": { 
+        icono: "🤖", desc: "IAs que trabajan solas. Tú les das un objetivo, y ellas planifican los pasos y ejecutan la tarea.",
+        tip: "💡 <b>Tip Profesional:</b> Usa agentes para automatizar tareas repetitivas, como hacer resúmenes de mercado o buscar información masiva en internet."
+      },
+      "Potencias Asiáticas": { 
+        icono: "🐉", desc: "Alternativas poderosas y a menudo gratuitas, destacadas en programación, matemáticas y lectura larga.",
+        tip: "💡 <b>Tip de Uso:</b> Si necesitas procesar un libro entero (cientos de páginas) de forma gratuita, Kimi o DeepSeek son tus mejores opciones."
+      },
+      "Redes y Bolsillo": { 
+        icono: "📱", desc: "Integradas en las apps que ya usas a diario (WhatsApp, Instagram, Twitter).",
+        tip: "💡 <b>Tip Práctico:</b> Usa Luzia en WhatsApp para transcribir audios largos de reuniones o clases instantáneamente."
+      },
+      "Herramientas Multimodelo": { 
+        icono: "🛠️", desc: "Suites completas, extensiones de navegador y plataformas todo-en-uno.",
+        tip: "💡 <b>Tip Docente:</b> Instala la extensión Merlin para generar resúmenes automáticos de videos educativos largos en YouTube."
+      }
+    };
+
+    // --- LÓGICA DE INTERFAZ ---
+    const catalogContainer = document.getElementById('catalogContainer');
+    const searchInput = document.getElementById('searchInput');
+    const categoryFilter = document.getElementById('categoryFilter');
+    const emptyState = document.getElementById('emptyState');
+
+    // Inicializar filtro de categorías
+    Object.keys(categoriasInfo).forEach(cat => {
+      const option = document.createElement('option');
+      option.value = cat;
+      option.textContent = cat;
+      categoryFilter.appendChild(option);
+    });
+
+    // Función para renderizar el catálogo
+    function renderCatalog() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const selectedCategory = categoryFilter.value;
+      
+      catalogContainer.innerHTML = '';
+      let hasResults = false;
+
+      Object.keys(categoriasInfo).forEach(categoria => {
+        // Filtrar herramientas por categoría actual, búsqueda y filtro de categoría global
+        const herramientasFiltradas = iaDatabase.filter(ia => {
+          const matchCategoria = selectedCategory === 'all' || ia.categoria === selectedCategory;
+          const matchBusqueda = ia.nombre.toLowerCase().includes(searchTerm) || 
+                                ia.descripcion.toLowerCase().includes(searchTerm) ||
+                                ia.tags.some(tag => tag.toLowerCase().includes(searchTerm));
+          return ia.categoria === categoria && matchCategoria && matchBusqueda;
+        });
+
+        if (herramientasFiltradas.length > 0) {
+          hasResults = true;
+          const catInfo = categoriasInfo[categoria];
+          
+          // Crear sección de categoría
+          const section = document.createElement('section');
+          section.className = 'category-section';
+          
+          section.innerHTML = `
+            <div class="category-header">
+              <h2>${catInfo.icono} ${categoria}</h2>
+              <p>${catInfo.desc}</p>
+              <div class="pedagogical-tip">
+                <i>${catInfo.tip.split(' ')[0]}</i>
+                <span>${catInfo.tip.substring(catInfo.tip.indexOf(' ')+1)}</span>
+              </div>
+            </div>
+            <div class="tools-grid">
+              ${herramientasFiltradas.map(ia => `
+                <article class="card">
+                  <div class="card-header">
+                    <div class="card-icon" style="background: ${ia.color}">${ia.icon}</div>
+                    <div class="card-title">
+                      <h3>${ia.nombre}</h3>
+                      <span>${ia.categoria}</span>
+                    </div>
+                  </div>
+                  <p class="card-desc">${ia.descripcion}</p>
+                  <div class="tags">
+                    ${ia.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                  </div>
+                  <a href="${ia.url}" target="_blank" rel="noopener noreferrer" class="card-action">
+                    Abrir ${ia.nombre}
+                  </a>
+                </article>
+              `).join('')}
+            </div>
+          `;
+          catalogContainer.appendChild(section);
+        }
+      });
+
+      if (hasResults) {
+        emptyState.classList.remove('active');
+      } else {
+        emptyState.classList.add('active');
+      }
+    }
+
+    // Event Listeners de Búsqueda y Filtro
+    searchInput.addEventListener('input', renderCatalog);
+    categoryFilter.addEventListener('change', renderCatalog);
+
+    // --- LÓGICA DEL MODO OSCURO/CLARO ---
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const rootEl = document.documentElement;
+    
+    // Verificar preferencia del sistema o localStorage
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    let currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    
+    function applyTheme(theme) {
+      rootEl.setAttribute('data-theme', theme);
+      themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+      localStorage.setItem('theme', theme);
+    }
+
+    applyTheme(currentTheme);
+
+    themeToggle.addEventListener('click', () => {
+      currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      applyTheme(currentTheme);
+    });
+
+    // Render inicial
+    renderCatalog();
+
+  </script>
+</body>
+</html>
